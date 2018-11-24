@@ -1,77 +1,54 @@
 import React, { Component } from 'react';
 import {
-  Navbar, Button, Grid, Row, Col, DropdownButton, MenuItem
+  Navbar, DropdownButton, MenuItem, Grid, Col,
 } from 'react-bootstrap';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
 import { CircleArrow as ScrollUpButton } from 'react-scroll-up-button';
-import SeriesList from './Components/SeriseList';
-import MenuBAr from './Components/Menu';
 import SearchForm from './Components/SearchForm';
+import AboutModal from './Components/AboutModal';
+import MenuBar from './Components/Menu';
+import SeriesList from './Components/SeriesList';
+import { logout } from './Routes';
+
 
 class App extends Component {
-  goTo(route) {
-    this.props.history.replace(`/${route}`);
+  constructor() {
+    super();
+
+
   }
 
-  login() {
-    this.props.auth.login();
-  }
-
-  logout() {
-    this.props.auth.logout();
-  }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
-
     return (
       <div>
         <Navbar fluid class="">
-          <Navbar.Header>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
+          <DropdownButton title={<i className="fas fa-user-circle" />} noCaret bsSize="large">
+            <MenuItem
+              eventKey="1"
+
             >
-              Home
-            </Button>
-            {!isAuthenticated() && (
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.login.bind(this)}
-              >
-                Log In
-              </Button>
-            )}
-            {isAuthenticated() && (
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.logout.bind(this)}
-              >
-                Log Out
-              </Button>
-            )}
-          </Navbar.Header>
-          <DropdownButton title={<i class="fas fa-user-circle" />} noCaret bsSize="large">
-            <MenuItem eventKey="1"
-              onClick={this.logout.bind(this)}
-            >Logout</MenuItem>
+              <a href="https://szoftarch.eu.auth0.com/v2/logout" onClick={logout}>Logout</a>
+            </MenuItem>
 
           </DropdownButton>
         </Navbar>
-
         <ScrollUpButton />
         <Grid fluid>
           <Col classname="MenuCol" lg={3}>
-            <MenuBAr />
+            <MenuBar />
           </Col>
           <Col lg={6}>
-            <SeriesList />
+            <Switch>
+              <Route path="/home" component={SeriesList} explicit />
+              <Route path="/search" component={SearchForm} explicit />
+              <Route path="/about" component={AboutModal} explicit />
+            </Switch>
           </Col>
           <Col lg={3} />
         </Grid>
+
       </div>
     );
   }

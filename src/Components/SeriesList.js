@@ -11,10 +11,9 @@ class SeriesList extends Component {
   }
 
   render() {
-    console.log(this.state.series);
     return (
       <div>
-        {this.state.series.map(series => (
+        {this.props.series.map(series => (
           <SeriesElement series={series} />
         ))}
       </div>

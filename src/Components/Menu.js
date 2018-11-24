@@ -25,7 +25,7 @@ const menu = [
   }
 ];
 
-class MenuBAr extends Component {
+class MenuBar extends Component {
   state = {
   };
   render() {
@@ -33,4 +33,4 @@ class MenuBAr extends Component {
   }
 }
 
-export default MenuBAr;
+export default MenuBar;
