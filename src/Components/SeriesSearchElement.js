@@ -2,68 +2,69 @@ import React, { Component } from 'react';
 import ModalImage from 'react-modal-image';
 
 import {
-    Button, Collapse, Tab, Tabs, Row, Grid, Col,
+  Button, Collapse, Tab, Tabs, Row, Grid, Col,
 } from 'react-bootstrap';
 
 import defaultpic from './default_pic2.png';
 import EpisodeSearchElement from './EpisodeSearchElement';
 
 class SeriesSearchElement extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            open: false,
-        }
-    }
-    render() {
-        return (
-            <div className="series_list_element">
-                <Grid fluid>
-                    <Row className="">
-                        <Col lg={3}>
-                            <ModalImage
-                                className="series_img"
-                                small={
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  render() {
+    return (
+          <div className="series_list_element">
+              <Grid fluid>
+                  <Row className="">
+                      <Col lg={3}>
+                          <ModalImage
+                              className="series_img"
+                              small={
                                     this.props.series.image ? this.props.series.image : defaultpic
                                 }
-                                hideDownload
+                              hideDownload
                             />
                         </Col>
-                        <Col lg={6}>
-                            <h1 className="series_name">{this.props.series.name}</h1>
-                            <h3>
-                                {this.props.series.networkName
-                                    ? this.props.series.networkName
-                                    : 'Unknown'}
+                      <Col lg={6}>
+                          <h1 className="series_name">{this.props.series.name}</h1>
+                          <h3>
+                              {this.props.series.networkName
+                                  ? this.props.series.networkName
+                                  : 'Unknown'}
                             </h3>
                         </Col>
-                        <Col lg={3}>
-                            <Button bsStyle="success">Follow</Button>
+                      <Col lg={3}>
+                          <Button bsStyle="success">Follow</Button>
                         </Col>
                     </Row>
-                    <Row>
+                  <Row>
 
-                        {this.props.series.summary}
+                      {this.props.series.summary}
                     </Row>
-                    <Row className="">
+                  <Row className="">
 
-                        <div>
-                            <Button className="SeriesCollapseButton" onClick={() => this.setState({ open: !this.state.open })}>
-                                {this.state.open ? (
-                                    <i className="fas fa-caret-up" />
+                      <div>
+                          <Button className="SeriesCollapseButton" onClick={() => this.setState({ open: !this.state.open })}>
+                              {this.state.open ? (
+                                  <i className="fas fa-caret-up" />
                                 ) : (
-                                        <i className="fas fa-caret-down" />
-                                    )}
+                                  <i className="fas fa-caret-down" />
+                                )}
                             </Button>
-                            <Collapse in={this.state.open}>
-                                <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                                    {this.props.series.seasons.map(seasons => (
-                                        <Tab eventKey={seasons.number} title={`${seasons.number}.Season`}>
+                          <Collapse in={this.state.open}>
+                              <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                                  {this.props.series.seasons.map(season => (
+                                      <Tab eventKey={season.number} title={`${season.number}.Season`}>
 
-                                            {seasons.episodes.map(episodes => (
-                                                <div>
+                                          {season.episodes.map(episode => (
+                                              <div>
 
-                                                    <EpisodeSearchElement episode={episodes} />
+                                                  <EpisodeSearchElement episode={episode} />
                                                 </div>
                                             ))}
                                         </Tab>
@@ -74,9 +75,9 @@ class SeriesSearchElement extends Component {
                     </Row>
                 </Grid>
             </div>
-        );
+    );
 
-    }
+  }
 }
 
 export default SeriesSearchElement;

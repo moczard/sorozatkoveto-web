@@ -22,6 +22,8 @@ class EpisodeElement extends Component {
 
     WatchEpisode = () => {
         /*Adding socket */
+
+
         if (this.state.isWatched) {
             return;
         }
@@ -38,20 +40,20 @@ class EpisodeElement extends Component {
                         <ModalImage
                             className="series_img"
                             small={
-                                this.props.image ? this.props.image : defaultpic
+                                this.props.episode.image ? this.props.episode.image : defaultpic
                             }
                             hideDownload
                         />
                     </Col>
                     <Col>
                         <h2>
-                            {this.props.name}
+                            {this.props.episode.name}
                         </h2>
                         <h4>
                             Runtime:
-                      {this.props.runtime}
+                      {this.props.episode.runtime}
                         </h4>
-                        <h4>{this.props.number}</h4>
+                        <h4>{this.props.episode.number}</h4>
 
                         <StarRatingBar />
                     </Col>

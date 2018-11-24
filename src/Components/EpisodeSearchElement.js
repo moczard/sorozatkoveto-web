@@ -38,25 +38,25 @@ class EpisodeSearchElement extends Component {
                             <ModalImage
                                 className="series_img"
                                 small={
-                                    this.props.image ? this.props.image : defaultpic
+                                    this.props.episode.image ? this.props.episode.image : defaultpic
                                 }
                                 hideDownload
                             />
                         </Col>
                         <Col>
-                            <h2>{this.props.name}</h2>
+                            <h2>{this.props.episode.name}</h2>
                             <h4>
                                 Runtime:
-                      {this.props.runtime}
+                      {this.props.episode.runtime}
                             </h4>
-                            <h4>{this.props.number}</h4>
+                            <h4>{this.props.episode.number}</h4>
 
 
                         </Col>
                     </Row>
 
                     <Row>
-                        <div>{this.props.summary}</div>
+                        <div>{this.props.episode.summary}</div>
                     </Row>
                 </Grid>
             </div>

@@ -56,12 +56,12 @@ class SeriesElement extends Component {
               </Button>
               <Collapse in={this.state.open}>
                 <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                  {this.props.series.seasons.map(seasons => (
-                    <Tab eventKey={seasons.number} title={`${seasons.number}.Season`}>
+                  {this.props.series.seasons.map(season => (
+                    <Tab eventKey={season.number} title={`${season.number}.Season`}>
 
-                      {seasons.episodes.map(episodes => (
+                      {season.episode.map(episode => (
                         <div>
-                          <EpisodeElement episode={episodes} />
+                          <EpisodeElement episode={episode} />
                         </div>
                       ))}
                     </Tab>
