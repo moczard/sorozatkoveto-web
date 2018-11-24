@@ -28,7 +28,7 @@ const makeMainRoutes = () => (
         }}
       />
       {auth.isAuthenticated()
-        ? <Route path="/" component={props => <App {...props} />} />
+        ? <Route path="/" component={props => <App logout={logout} {...props} />} />
         : auth.login()}
     </div>
   </Router>

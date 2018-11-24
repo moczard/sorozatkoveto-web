@@ -23,6 +23,7 @@ class SearchForm extends Component {
       this.setState({ genres: data });
     });
     this.socket.on('series', (data) => {
+      console.log(data)
       this.setState({ series: data });
     });
   }

@@ -1,14 +1,19 @@
-import React, { Component } from "react";
-import ModalImage from "react-modal-image";
-import StarRatingBar from "./Rating";
-import { Button, Collapse, Well, Tab, Tabs, Carousel, Label, Row, Grid, Col } from "react-bootstrap";
-import defaultpic from "./default_pic2.png";
+import React, { Component } from 'react';
+import ModalImage from 'react-modal-image';
+import {
+  Button, Collapse, Well, Tab, Tabs, Label, Row, Grid, Col,
+} from 'react-bootstrap';
+import StarRatingBar from './Rating';
+import defaultpic from './default_pic2.png';
 
 
 class SeriesElement extends Component {
-  state = {
-    open: false
-  };
+  constructor() {
+    super();
+    this.state = {
+      open: false,
+    };
+  }
 
   render() {
     return (
@@ -19,9 +24,9 @@ class SeriesElement extends Component {
               <ModalImage
                 className="series_img"
                 small={
-                  this.props.series.image
+                  this.props.series.image ? this.props.series.image : defaultpic
                 }
-                hideDownload={true}
+                hideDownload
               />
             </Col>
             <Col lg={6}>
@@ -29,10 +34,10 @@ class SeriesElement extends Component {
               <h3>
                 {this.props.series.networkName
                   ? this.props.series.networkName
-                  : "Unknown"}
+                  : 'Unknown'}
               </h3>
             </Col>
-            <Col lg={3} >
+            <Col lg={3}>
               <Label bsStyle="success">Followed</Label>
             </Col>
           </Row>
@@ -41,10 +46,10 @@ class SeriesElement extends Component {
             <div>
               <Button className="SeriesCollapseButton" onClick={() => this.setState({ open: !this.state.open })}>
                 {this.state.open ? (
-                  <i class="fas fa-caret-up" />
+                  <i className="fas fa-caret-up" />
                 ) : (
-                    <i class="fas fa-caret-down" />
-                  )}
+                  <i className="fas fa-caret-down" />
+                )}
               </Button>
               <Collapse in={this.state.open}>
                 <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
@@ -63,11 +68,7 @@ class SeriesElement extends Component {
             </div>
           </Row>
         </Grid>
-
-
-
-
-      </div >
+      </div>
     );
   }
 }

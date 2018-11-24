@@ -3,20 +3,32 @@ import {
   Navbar, DropdownButton, MenuItem, Grid, Col,
 } from 'react-bootstrap';
 import './App.css';
+import jwt from 'jsonwebtoken';
+import md5 from 'md5';
 import { Route, Switch } from 'react-router-dom';
 import { CircleArrow as ScrollUpButton } from 'react-scroll-up-button';
+import { publicKey, autOptions } from './Authentication/AuthenticationConfig';
+import connect from './Socket/socket';
 import SearchForm from './Components/SearchForm';
 import AboutModal from './Components/AboutModal';
 import MenuBar from './Components/Menu';
 import SeriesList from './Components/SeriesList';
-import { logout } from './Routes';
 
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.socket = connect();
+  }
 
-
+  async componentDidMount() {
+    try {
+      const auth = await jwt.verify(localStorage.getItem('id_token'), publicKey, autOptions);
+      const emailHash = md5(auth['http://szoftarch/email']);
+      this.socket.emit('addUser', { emailHash });
+    } catch (err) {
+      // TODO
+    }
   }
 
 
@@ -27,9 +39,8 @@ class App extends Component {
           <DropdownButton title={<i className="fas fa-user-circle" />} noCaret bsSize="large">
             <MenuItem
               eventKey="1"
-
             >
-              <a href="https://szoftarch.eu.auth0.com/v2/logout" onClick={logout}>Logout</a>
+              <a href="https://szoftarch.eu.auth0.com/v2/logout" onClick={this.props.logout}>Logout</a>
             </MenuItem>
 
           </DropdownButton>
