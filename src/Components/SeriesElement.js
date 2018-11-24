@@ -7,12 +7,10 @@ import defaultpic from "./default_pic2.png";
 
 class SeriesElement extends Component {
   state = {
-    series: this.props.series,
     open: false
   };
 
   render() {
-    console.log(this.state.series);
     return (
       <div className="series_list_element">
         <Grid fluid>
@@ -21,24 +19,16 @@ class SeriesElement extends Component {
               <ModalImage
                 className="series_img"
                 small={
-                  this.state.series.show.image
-                    ? this.state.series.show.image.medium
-                    : { defaultpic }
-                }
-                large={
-                  this.state.series.show.image
-                    ? this.state.series.show.image.original
-                    : "Sorry"
+                  this.props.series.image
                 }
                 hideDownload={true}
-
               />
             </Col>
             <Col lg={6}>
-              <h1 className="series_name">{this.state.series.show.name}</h1>
+              <h1 className="series_name">{this.props.series.name}</h1>
               <h3>
-                {this.state.series.show.network.name
-                  ? this.state.series.show.network.name
+                {this.props.series.networkName
+                  ? this.props.series.networkName
                   : "Unknown"}
               </h3>
             </Col>
@@ -60,17 +50,12 @@ class SeriesElement extends Component {
                 <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                   <Tab eventKey={1} title="1. Season">
                     <div>
-                      <Well>{this.state.series.show.summary}</Well>
+                      <Well>{this.props.series.summary}</Well>
                     </div>
                   </Tab>
                   <Tab eventKey={2} title="2. Season">
                     <div>
-                      <h1>{this.state.series.show.name}</h1>
-                    </div>
-                  </Tab>
-                  <Tab eventKey={3} title="3 Season">
-                    <div>
-                      <h1>{this.state.series.show.type}</h1>
+                      <h1>{this.props.series.name}</h1>
                     </div>
                   </Tab>
                 </Tabs>

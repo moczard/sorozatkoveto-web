@@ -3,7 +3,7 @@ import {
   Button, FormControl, Checkbox, ControlLabel,
 } from 'react-bootstrap';
 import connect from '../Socket/socket';
-import SeriesList from '../Components/SeriesList';
+import SeriesElement from '../Components/SeriesElement';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -16,8 +16,6 @@ class SearchForm extends Component {
       series: [],
     };
     this.socket.emit('genres');
-    this.socket.emit('findByTitle');
-    this.myInput = '';
   }
 
   setupSocket() {
@@ -33,28 +31,29 @@ class SearchForm extends Component {
     event.preventDefault();
   }
 
-  handleGenreChange() {
-    console.log(this.inputEl)
+  handleGenreChange = () => {
+    const genre = this.genreInput.value ? this.genreInput.value : '';
+    this.socket.emit('findByGenre', { genre })
   }
 
   handleTitleChange = () => {
-    this.socket.emit('findByTitle', { title: this.myInput.value })
-    console.log(this.state.series)
-    console.log(this.myInput.value)
-
+    const title = this.titleInput.value ? this.titleInput.value : '';
+    this.socket.emit('findByTitle', { title })
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <ControlLabel>Search</ControlLabel>
-        <FormControl type="text" placeholder="Searh here" inputRef={ref => { this.myInput = ref; }} onChange={this.handleTitleChange} />
+        <FormControl type="text" placeholder="Searh here" inputRef={ref => { this.titleInput = ref; }} onChange={this.handleTitleChange} />
         <Checkbox unchecked>Series only</Checkbox>
-        <FormControl componentClass="select" placeholder="Genre" inputRef={el => this.inputEl = el} onChange={this.handleGenreChange} >
+        <FormControl componentClass="select" placeholder="Genre" inputRef={ref => { this.genreInput = ref; }} onChange={this.handleGenreChange} >
           {this.state.genres.map(genre => <option value={genre}>{genre}</option>)}
         </FormControl>
         <Button bsStyle="primary">Submit</Button>
-        <SeriesList series={this.state.series}></SeriesList>
+        {this.state.series.map(series => (
+          <SeriesElement series={series} />
+        ))}
       </form>
     );
   }
