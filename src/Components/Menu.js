@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Router from "../Routes"
 import MetisMenu from "react-metismenu";
 
 

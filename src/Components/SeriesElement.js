@@ -3,7 +3,6 @@ import ModalImage from 'react-modal-image';
 import {
   Button, Collapse, Tab, Tabs, Label, Row, Grid, Col,
 } from 'react-bootstrap';
-import StarRatingBar from './Rating';
 import defaultpic from './default_pic2.png';
 import EpisodeElement from './EpisodeElement';
 
@@ -16,10 +15,9 @@ class SeriesElement extends Component {
   }
 
   render() {
-
-
+    const { series } = this.props;
+    const { open } = this.state;
     return (
-
       <div className="series_list_element">
         <Grid fluid>
           <Row className="">
@@ -27,16 +25,16 @@ class SeriesElement extends Component {
               <ModalImage
                 className="series_img"
                 small={
-                  this.props.series.image ? this.props.series.image : defaultpic
+                  series.image ? series.image : defaultpic
                 }
                 hideDownload
               />
             </Col>
             <Col lg={6}>
-              <h1 className="series_name">{this.props.series.name}</h1>
+              <h1 className="series_name">{series.name}</h1>
               <h3>
-                {this.props.series.networkName
-                  ? this.props.series.networkName
+                {series.networkName
+                  ? series.networkName
                   : 'Unknown'}
               </h3>
             </Col>
@@ -45,23 +43,39 @@ class SeriesElement extends Component {
             </Col>
           </Row>
           <Row className="">
-            <StarRatingBar name="series.name" />
             <div>
-              <Button className="SeriesCollapseButton" onClick={() => this.setState({ open: !this.state.open })}>
-                {this.state.open ? (
+              <Button className="SeriesCollapseButton" onClick={() => this.setState({ open: !open })}>
+                {open ? (
                   <i className="fas fa-caret-up" />
                 ) : (
-                    <i className="fas fa-caret-down" />
-                  )}
+                  <i className="fas fa-caret-down" />
+                )}
               </Button>
-              <Collapse in={this.state.open}>
+              <Collapse in={open}>
                 <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                  {this.props.series.seasons.map(season => (
+                  {series.seasons.map(season => (
                     <Tab eventKey={season.number} title={`${season.number}.Season`}>
 
-                      {season.episode.map(episode => (
+                      {season.episodes.map(episode => (
                         <div>
-                          <EpisodeElement episode={episode} />
+                          <EpisodeElement
+                            episode={episode}
+                            isWatched={this.props.watchedEpisodes.filter(watchedEpisode => (
+                              watchedEpisode.seriesId === series.id
+                              && watchedEpisode.season === season.number
+                              && watchedEpisode.episode === episode.number
+                            )).length}
+                            rating={this.props.ratings.length 
+                              ? this.props.ratings.filter(rating => (
+                                rating.season === season.number
+                              && rating.episode === episode.number
+                              ))
+                              : null}
+                            handleWatched={this.props.handleWatched}
+                            handleRating={this.props.handleRating}
+                            season={season.number}
+                            seriesId={series.id}
+                          />
                         </div>
                       ))}
                     </Tab>
@@ -73,7 +87,6 @@ class SeriesElement extends Component {
         </Grid>
       </div>
     );
-
   }
 }
 

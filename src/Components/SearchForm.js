@@ -14,8 +14,10 @@ class SearchForm extends Component {
     this.state = {
       genres: [],
       series: [],
+      userData: {},
     };
     this.socket.emit('genres');
+    this.socket.emit('getByEmailHash', { emailHash: localStorage.getItem('emailHash')});
   }
 
   setupSocket() {
@@ -23,8 +25,10 @@ class SearchForm extends Component {
       this.setState({ genres: data });
     });
     this.socket.on('series', (data) => {
-      console.log(data)
       this.setState({ series: data });
+    });
+    this.socket.on('user', (data) => {
+      this.setState({ userData: data[0] });
     });
   }
 
@@ -51,7 +55,10 @@ class SearchForm extends Component {
           {this.state.genres.map(genre => <option value={genre}>{genre}</option>)}
         </FormControl>
         {this.state.series.map(series => (
-          <SeriesSearchElement series={series} />
+          <SeriesSearchElement 
+            series={series}
+            followedSeries={this.state.userData.followedSeries} 
+          />
         ))}
       </form>
     );

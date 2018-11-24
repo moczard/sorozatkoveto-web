@@ -1,82 +1,68 @@
 import React, { Component } from 'react';
 import {
-    Button, Grid, Col, Row,
+  Button, Grid, Col,
 } from 'react-bootstrap';
 import ModalImage from 'react-modal-image';
 import StarRatingBar from './Rating';
 import defaultpic from './default_pic2.png';
-import connect from '../Socket/socket';
+
+
 class EpisodeElement extends Component {
+  watchEpisode = () => {
+    this.props.handleWatched(this.props.seriesId, this.props.season, this.props.episode.number);
+  }
 
-    constructor() {
-        super();
-        this.socket = connect();
+  rateEpisode = (rating) => {
+    this.props.handleRating(this.props.seriesId, this.props.season, this.props.episode.number, rating);
+  }
 
-        this.state = {
-            isWatched: false
-
-        };
-    }
-
-
-
-    WatchEpisode = () => {
-        /*Adding socket */
-
-
-        if (this.state.isWatched) {
-            return;
-        }
-        this.setState({ isWatched: true });
-    }
-
-
-    render() {
-        return (
-            <div>
-                <Grid>
-                    <Col>
-
-                        <ModalImage
-                            className="series_img"
-                            small={
-                                this.props.episode.image ? this.props.episode.image : defaultpic
-                            }
-                            hideDownload
-                        />
-                    </Col>
-                    <Col>
-                        <h2>
-                            {this.props.episode.name}
-                        </h2>
-                        <h4>
+  render() {
+    return (
+      <div>
+        <Grid>
+          <Col>
+            <ModalImage
+              className="series_img"
+              small={
+                  this.props.episode.image ? this.props.episode.image : defaultpic
+                }
+              hideDownload
+            />
+          </Col>
+          <Col>
+            <h2>
+              {this.props.episode.name}
+            </h2>
+            <h4>
                             Runtime:
-                      {this.props.episode.runtime}
-                        </h4>
-                        <h4>{this.props.episode.number}</h4>
+              {this.props.episode.runtime}
+            </h4>
+            <h4>{this.props.episode.number}</h4>
 
-                        <StarRatingBar />
-                    </Col>
-                    <Col>
-                        <Button
-                            onClick={this.WatchEpisode}
-                            disabled={this.state.isWatched}
-                        >
+            <StarRatingBar
+                rating={this.props.rating && this.props.rating.length 
+                    ? this.props.rating[0].sum / this.props.rating[0].count : null}
+                changeRating={this.rateEpisode}
+            />
+          </Col>
+          <Col>
+            <Button
+              onClick={this.watchEpisode}
+              disabled={this.props.isWatched}
+            >
+              {this.props.isWatched ? (
+                <i className="fas fa-eye" />
+              ) : (
+                <i className="fas fa-eye-slash" />
+              )}
 
-                            {this.state.isWatched ? (
-                                <i className="fas fa-eye" />
-                            ) : (
-                                    <i className="fas fa-eye-slash" />
-                                )}
+            </Button>
+          </Col>
+        </Grid>
+      </div>
 
-                        </Button>
-                    </Col>
-                </Grid>
-            </div>
-
-        );
-
-    }
+    );
+  }
 }
 
 export default EpisodeElement;

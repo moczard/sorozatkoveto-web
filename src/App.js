@@ -25,6 +25,7 @@ class App extends Component {
     try {
       const auth = await jwt.verify(localStorage.getItem('id_token'), publicKey, autOptions);
       const emailHash = md5(auth['http://szoftarch/email']);
+      localStorage.setItem('emailHash', emailHash);
       this.socket.emit('addUser', { emailHash });
     } catch (err) {
       // TODO

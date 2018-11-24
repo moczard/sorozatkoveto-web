@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import {
-    Button, Grid, Col, Row,
+    Grid, Col, Row,
 } from 'react-bootstrap';
 import ModalImage from 'react-modal-image';
-import StarRatingBar from './Rating';
 import defaultpic from './default_pic2.png';
-import connect from '../Socket/socket';
+
 
 class EpisodeSearchElement extends Component {
 
     constructor(props) {
         super(props);
-        this.socket = connect();
-
         this.state = {
             isWatched: false
         };
