@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import ModalImage from 'react-modal-image';
 import {
-  Button, Collapse, Well, Tab, Tabs, Label, Row, Grid, Col,
+  Button, Collapse, Tab, Tabs, Label, Row, Grid, Col,
 } from 'react-bootstrap';
 import StarRatingBar from './Rating';
 import defaultpic from './default_pic2.png';
-
+import EpisodeElement from './EpisodeElement';
 
 class SeriesElement extends Component {
   constructor() {
@@ -16,7 +16,10 @@ class SeriesElement extends Component {
   }
 
   render() {
+
+
     return (
+
       <div className="series_list_element">
         <Grid fluid>
           <Row className="">
@@ -48,21 +51,21 @@ class SeriesElement extends Component {
                 {this.state.open ? (
                   <i className="fas fa-caret-up" />
                 ) : (
-                  <i className="fas fa-caret-down" />
-                )}
+                    <i className="fas fa-caret-down" />
+                  )}
               </Button>
               <Collapse in={this.state.open}>
                 <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                  <Tab eventKey={1} title="1. Season">
-                    <div>
-                      <Well>{this.props.series.summary}</Well>
-                    </div>
-                  </Tab>
-                  <Tab eventKey={2} title="2. Season">
-                    <div>
-                      <h1>{this.props.series.name}</h1>
-                    </div>
-                  </Tab>
+                  {this.props.series.seasons.map(seasons => (
+                    <Tab eventKey={seasons.number} title={`${seasons.number}.Season`}>
+
+                      {seasons.episodes.map(episodes => (
+                        <div>
+                          <EpisodeElement episode={episodes} />
+                        </div>
+                      ))}
+                    </Tab>
+                  ))}
                 </Tabs>
               </Collapse>
             </div>
@@ -70,6 +73,7 @@ class SeriesElement extends Component {
         </Grid>
       </div>
     );
+
   }
 }
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Button, FormControl, Checkbox, ControlLabel,
+  FormControl, ControlLabel,
 } from 'react-bootstrap';
 import connect from '../Socket/socket';
-import SeriesElement from '../Components/SeriesElement';
+import SeriesSearchElement from '../Components/SeriesSearchElement';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -47,13 +47,11 @@ class SearchForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <ControlLabel>Search</ControlLabel>
         <FormControl type="text" placeholder="Searh here" inputRef={ref => { this.titleInput = ref; }} onChange={this.handleTitleChange} />
-        <Checkbox unchecked>Series only</Checkbox>
         <FormControl componentClass="select" placeholder="Genre" inputRef={ref => { this.genreInput = ref; }} onChange={this.handleGenreChange} >
           {this.state.genres.map(genre => <option value={genre}>{genre}</option>)}
         </FormControl>
-        <Button bsStyle="primary">Submit</Button>
         {this.state.series.map(series => (
-          <SeriesElement series={series} />
+          <SeriesSearchElement series={series} />
         ))}
       </form>
     );
