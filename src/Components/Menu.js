@@ -1,32 +1,23 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import Router from "../Routes"
 import MetisMenu from "react-metismenu";
+
 
 const menu = [
   {
     icon: "fa fa-home",
     label: "Home",
-    to: "menu-1"
+    to: "/home"
   },
   {
     icon: "fa fa-search",
     label: "Search",
-    to: "menu-2"
-  },
-  {
-    icon: "bolt",
-    label: "Menu 3",
-    content: [
-      {
-        icon: "bolt",
-        label: "Sub Menu",
-        to: "sub-menu"
-      }
-    ]
+    to: "/search"
   },
   {
     icon: "fas fa-angle-right",
-    label: "About"
+    label: "About",
+    to: "/about"
   },
   {
     icon: "fa fa-sign-out-alt",
@@ -35,7 +26,8 @@ const menu = [
 ];
 
 class MenuBAr extends Component {
-  state = {};
+  state = {
+  };
   render() {
     return <MetisMenu content={menu} />;
   }

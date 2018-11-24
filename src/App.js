@@ -1,10 +1,12 @@
-import React, { Component } from "react";
-import { Navbar, Button, Grid, Row, Col } from "react-bootstrap";
-import "./App.css";
-import SeriesList from "./Components/SeriseList";
-import MenuBAr from "./Components/Menu";
-import { CircleArrow as ScrollUpButton } from "react-scroll-up-button";
-import SearchForm from "./Components/SearchForm";
+import React, { Component } from 'react';
+import {
+  Navbar, Button, Grid, Row, Col, DropdownButton, MenuItem
+} from 'react-bootstrap';
+import './App.css';
+import { CircleArrow as ScrollUpButton } from 'react-scroll-up-button';
+import SeriesList from './Components/SeriseList';
+import MenuBAr from './Components/Menu';
+import SearchForm from './Components/SearchForm';
 
 class App extends Component {
   goTo(route) {
@@ -29,7 +31,7 @@ class App extends Component {
             <Button
               bsStyle="primary"
               className="btn-margin"
-              onClick={this.goTo.bind(this, "home")}
+              onClick={this.goTo.bind(this, 'home')}
             >
               Home
             </Button>
@@ -52,19 +54,23 @@ class App extends Component {
               </Button>
             )}
           </Navbar.Header>
+          <DropdownButton title={<i class="fas fa-user-circle" />} noCaret bsSize="large">
+            <MenuItem eventKey="1"
+              onClick={this.logout.bind(this)}
+            >Logout</MenuItem>
+
+          </DropdownButton>
         </Navbar>
 
         <ScrollUpButton />
         <Grid fluid>
-          <Row className="">
-            <Col lg={3}>
-              <MenuBAr />
-            </Col>
-            <Col lg={6}>
-              <SeriesList />
-            </Col>
-            <Col lg={3} />
-          </Row>
+          <Col classname="MenuCol" lg={3}>
+            <MenuBAr />
+          </Col>
+          <Col lg={6}>
+            <SeriesList />
+          </Col>
+          <Col lg={3} />
         </Grid>
       </div>
     );

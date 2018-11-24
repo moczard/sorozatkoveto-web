@@ -1,15 +1,16 @@
-import React from "react";
-import { Route, Router } from "react-router-dom";
-import Callback from "./Authentication/Callback";
-import Auth from "./Authentication/AuthenticationService";
-import history from "./Authentication/History";
-import App from "./App";
-import Home from "./Home/Home";
-import SearchForm from "./Components/SearchForm";
+import React from 'react';
+import { Route, Router } from 'react-router-dom';
+import Callback from './Authentication/Callback';
+import Auth from './Authentication/AuthenticationService';
+import history from './Authentication/History';
+import App from './App';
+import Home from './Home/Home';
+import SearchForm from './Components/SearchForm';
+import AboutModal from './Components/AboutModal'
 
 const auth = new Auth();
 
-const handleAuthentication = nextState => {
+const handleAuthentication = (nextState) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
     auth.handleAuthentication();
   }
@@ -19,11 +20,12 @@ const makeMainRoutes = () => (
   <Router history={history} component={App}>
     <div>
       <Route path="/" render={props => <App auth={auth} {...props} />} />
-      <Route path="/home" render={props => <Home auth={auth} {...props} />} />
+      <Route path="/home" render={props => <Home auth={auth} {...props} explicit />} />
       <Route path="/search" component={SearchForm} explicit />
+      <Route path="/about" component={AboutModal} explicit />
       <Route
         path="/callback"
-        render={props => {
+        render={(props) => {
           handleAuthentication(props);
           return <Callback {...props} />;
         }}

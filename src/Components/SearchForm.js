@@ -5,9 +5,15 @@ class SearchForm extends Component {
   state = {
     genreOptions: { 1: "Drama", 2: "Comedy", 3: "Thriller" }
   };
+
+  handleSubmit(event) {
+
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <ControlLabel>Search</ControlLabel>
         <FormControl type="text" placeholder="Searh here" />
         <Checkbox unchecked>Series only</Checkbox>

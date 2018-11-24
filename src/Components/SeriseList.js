@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import testData from "./proba_adat.json";
-import SeriesElement from "./Series_element";
+import React, { Component } from 'react';
+import testData from './proba_adat.json';
+import SeriesElement from './SeriesElement';
 
 class SeriesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      series: testData
+      series: testData,
     };
   }
+
   render() {
     console.log(this.state.series);
     return (

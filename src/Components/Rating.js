@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import StarRatings from "react-star-ratings";
+import React, { Component } from 'react';
+import StarRatings from 'react-star-ratings';
 
 class StarRatingBar extends Component {
   constructor(props) {
@@ -7,15 +7,16 @@ class StarRatingBar extends Component {
     this.state = {
       /* TODO: Implement rating change */
       rating: 0,
-      name: this.props.name
+
     };
   }
 
-  changeRating(newRating) {
+  changeRating(newRating, name) {
     this.setState({
-      rating: newRating
+      rating: newRating,
     });
   }
+
   render() {
     return (
       <StarRatings
