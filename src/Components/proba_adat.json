@@ -1,0 +1,461 @@
+[
+  {
+    "score": 12.640529,
+    "show": {
+      "id": 5598,
+      "url": "http://www.tvmaze.com/shows/5598/new-york-undercover",
+      "name": "New York Undercover",
+      "type": "Scripted",
+      "language": "English",
+      "genres": ["Drama", "Action", "Crime"],
+      "status": "Ended",
+      "runtime": 60,
+      "premiered": "1994-09-08",
+      "officialSite": null,
+      "schedule": {
+        "time": "21:00",
+        "days": ["Thursday"]
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 0,
+      "network": {
+        "id": 4,
+        "name": "FOX",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": 4655,
+        "thetvdb": 76233,
+        "imdb": "tt0108876"
+      },
+      "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/22/56905.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/22/56905.jpg"
+      },
+      "summary": "<p>New York police Detectives J.C. Williams, a recently divorced cop trying to be a good father to his son, and Eddie Torres, a young Puerto Rican who struggles with his heritage, try to balance their stressful work duties with their own personal demands. Their boss, Lt. Virginia Cooper, is tough but fair in her assignments.</p>",
+      "updated": 1537975064,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/5598"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/338041"
+        }
+      }
+    }
+  },
+  {
+    "score": 11.970622,
+    "show": {
+      "id": 3308,
+      "url": "http://www.tvmaze.com/shows/3308/million-dollar-listing-new-york",
+      "name": "Million Dollar Listing: New York",
+      "type": "Reality",
+      "language": "English",
+      "genres": [],
+      "status": "Running",
+      "runtime": 60,
+      "premiered": "2012-03-07",
+      "officialSite": "http://www.bravotv.com/million-dollar-listing-new-york",
+      "schedule": {
+        "time": "22:00",
+        "days": ["Tuesday"]
+      },
+      "rating": {
+        "average": 8.1
+      },
+      "weight": 97,
+      "network": {
+        "id": 52,
+        "name": "Bravo",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": 29970,
+        "thetvdb": 256386,
+        "imdb": "tt1879599"
+      },
+      "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/61/154060.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/61/154060.jpg"
+      },
+      "summary": "<p><b>Million Dollar Listing: New York</b> is an American reality series that first aired on the Bravo television network. The show follows real estate agents selling high-end properties. The series, presented in one-hour episodes, gives viewers an inside look at the world of high-priced real estate in New York City.</p>",
+      "updated": 1536243495,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/3308"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/1520866"
+        }
+      }
+    }
+  },
+  {
+    "score": 11.505399,
+    "show": {
+      "id": 4206,
+      "url": "http://www.tvmaze.com/shows/4206/storage-wars-new-york",
+      "name": "Storage Wars: New York",
+      "type": "Reality",
+      "language": "English",
+      "genres": [],
+      "status": "Ended",
+      "runtime": 30,
+      "premiered": "2013-01-01",
+      "officialSite": "http://www.aetv.com/shows/storage-wars-new-york",
+      "schedule": {
+        "time": "22:00",
+        "days": ["Friday"]
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 63,
+      "network": {
+        "id": 29,
+        "name": "A&E",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": 33665,
+        "thetvdb": 264535,
+        "imdb": "tt2611472"
+      },
+      "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/20/50579.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/20/50579.jpg"
+      },
+      "summary": "<p>A&amp;E Network is breaking the locks off the tri-state area's abandoned storage units with the season premiere of its latest hit series <b>Storage Wars: New York</b>. The East Coast treasure hunters are back for an action packed new season, and the drama that brews in the Big Apple is almost good enough to eat! Back-to-back new episodes of <i>Storage Wars: New York</i> premiere Tuesday, July 9 at 9PM and 9:30PM ET/PT.</p><p><i>Storage Wars: New York</i> follows a group of urban explorers in a modern-day treasure hunt for forgotten gems. In the nation's most populated city, with its notoriously small apartments and storage dilemmas, there's no telling what amazing valuables might exist within the storage units of New York and its surrounding areas.</p>",
+      "updated": 1504456651,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/4206"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/278146"
+        }
+      }
+    }
+  },
+  {
+    "score": 9.727732,
+    "show": {
+      "id": 16827,
+      "url": "http://www.tvmaze.com/shows/16827/treasures-of-new-york",
+      "name": "Treasures of New York",
+      "type": "Documentary",
+      "language": "English",
+      "genres": [],
+      "status": "Running",
+      "runtime": 30,
+      "premiered": "2012-04-02",
+      "officialSite": null,
+      "schedule": {
+        "time": "20:00",
+        "days": ["Tuesday"]
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 0,
+      "network": {
+        "id": 85,
+        "name": "PBS",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": null,
+        "thetvdb": 278089,
+        "imdb": null
+      },
+      "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/56/140582.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/56/140582.jpg"
+      },
+      "summary": "<p><b>Treasures of New York</b> is a documentary series exploring New York City's premier cultural establishments, from The New York Botanical Gardens, to the Park Avenue Armory, and beyond.</p>",
+      "updated": 1541646752,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/16827"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/1561767"
+        }
+      }
+    }
+  },
+  {
+    "score": 9.521192,
+    "show": {
+      "id": 5412,
+      "url": "http://www.tvmaze.com/shows/5412/i-love-new-york",
+      "name": "I Love New York",
+      "type": "Reality",
+      "language": "English",
+      "genres": [],
+      "status": "Ended",
+      "runtime": 60,
+      "premiered": "2007-01-08",
+      "officialSite": "http://www.vh1.com/shows/i-love-new-york",
+      "schedule": {
+        "time": "21:00",
+        "days": ["Monday"]
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 0,
+      "network": {
+        "id": 55,
+        "name": "VH1",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": null,
+        "thetvdb": 82397,
+        "imdb": "tt0885435"
+      },
+      "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/43/109628.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/43/109628.jpg"
+      },
+      "summary": "<p>Tiffany Patterson, a.k.a. arch nemesis \"New York\" from VH1's \"Flavor of Love\", won't let the fact that Flava Flav rejected her (twice!) stand in the way of true happiness. VH1 has given the gal her own show in which 20 \"hunky\" men will vie for her affections. Along the way, she'll be counseled by her infamous mother, Sister Patterson, and consoled by a puppy named Her Majesty. Each of the contestants will be nicknamed by New York -- just like Flava did on his show -- with colorful monikers like \"12 Pack\", \"Pootie\" and \"Mr. Boston\".</p>",
+      "updated": 1533503301,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/5412"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/327056"
+        }
+      }
+    }
+  },
+  {
+    "score": 9.521192,
+    "show": {
+      "id": 14039,
+      "url": "http://www.tvmaze.com/shows/14039/taking-new-york",
+      "name": "Taking New York",
+      "type": "Reality",
+      "language": "English",
+      "genres": [],
+      "status": "Ended",
+      "runtime": 45,
+      "premiered": "2015-02-09",
+      "officialSite": "http://www.channel4.com/programmes/taking-new-york",
+      "schedule": {
+        "time": "22:00",
+        "days": ["Monday"]
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 0,
+      "network": {
+        "id": 41,
+        "name": "E4",
+        "country": {
+          "name": "United Kingdom",
+          "code": "GB",
+          "timezone": "Europe/London"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": null,
+        "thetvdb": 291928,
+        "imdb": null
+      },
+      "image": null,
+      "summary": "<p>Gorgeous, ballsy and super ambitious, this lot are taking in the extreme highs and cut-throat lows that only NY living provides. The group includes associate art gallery director Amy and her sassy graduate twin Megan; high-flying Essex model Jamie and his equally successful lad-pad flat-mates Ben and Danny; special events producer Sophie and her super ambitious friend Georgina; West End actor James, who is searching for his big US break; newbie to the city and boy next door Henry; slick businessman and bar owner Gagan; America's Next Top Model winner Sumner; and British gent and hospitality worker Matt. Some of the eclectic bunch are already great mates and go way back; the rest have to make friends and learn how to play nicely together.</p>",
+      "updated": 1503721815,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/14039"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/646658"
+        }
+      }
+    }
+  },
+  {
+    "score": 9.521192,
+    "show": {
+      "id": 12762,
+      "url": "http://www.tvmaze.com/shows/12762/the-a-list-new-york",
+      "name": "The A-List: New York",
+      "type": "Reality",
+      "language": "English",
+      "genres": ["Drama"],
+      "status": "Ended",
+      "runtime": 60,
+      "premiered": "2010-10-04",
+      "officialSite": "http://www.logotv.com/shows/the-a-list-new-york",
+      "schedule": {
+        "time": "22:00",
+        "days": ["Monday"]
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 0,
+      "network": {
+        "id": 117,
+        "name": "Logo TV",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": null,
+        "thetvdb": 195481,
+        "imdb": "tt1729127"
+      },
+      "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/43/109334.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/43/109334.jpg"
+      },
+      "summary": "<p>If you thought the housewives were desperate, wait 'til you meet the houseboys! Logo's much buzzed about docu-reality series, <b>The A-List: New York</b> follows members of New York's gay elite plus their families, best girlfriends, and pocket dogs (natch) as they navigate being fabulous in the city. Follow their tangled friendships, rivalries and aspirations as they hop from benefit to beach house to pied-a-terre, dropping serious coin on toys for grown ups all along the way. From the producers of The Real Housewives of Atlanta, The A-List: New York explores the excess and envy of a new population, taking its rightful place alongside the greatest of guilty pleasure television</p>",
+      "updated": 1533504389,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/12762"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/605494"
+        }
+      }
+    }
+  },
+  {
+    "score": 9.521192,
+    "show": {
+      "id": 24442,
+      "url": "http://www.tvmaze.com/shows/24442/selling-new-york",
+      "name": "Selling New York",
+      "type": "Reality",
+      "language": "English",
+      "genres": [],
+      "status": "Ended",
+      "runtime": 30,
+      "premiered": "2010-03-18",
+      "officialSite": "http://www.hgtv.com/shows/selling-new-york",
+      "schedule": {
+        "time": "21:00",
+        "days": ["Thursday"]
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 0,
+      "network": {
+        "id": 192,
+        "name": "HGTV",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": null,
+        "thetvdb": 215131,
+        "imdb": "tt1666679"
+      },
+      "image": {
+        "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/93/232979.jpg",
+        "original": "http://static.tvmaze.com/uploads/images/original_untouched/93/232979.jpg"
+      },
+      "summary": "<p>They are assertive, razor-sharp and always compelling real estate brokers in the country's most competitive market. In a city of over 8 million people, where the average sale price is over $2 million, the competition to seal the deal is stiff. Now, catch a rare glimpse into a world where a solid reputation at the top of the real estate food chain involves swimming with the sharks, going head-to-head with the best, and rubbing shoulders with the wealthiest and trendiest of New York's social, political and artistic elite. This is <b>Selling New York</b>.</p>",
+      "updated": 1518559751,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/24442"
+        },
+        "previousepisode": {
+          "href": "http://api.tvmaze.com/episodes/1042951"
+        }
+      }
+    }
+  },
+  {
+    "score": 9.521192,
+    "show": {
+      "id": 34597,
+      "url": "http://www.tvmaze.com/shows/34597/pandas-in-new-york",
+      "name": "Pandas in New York",
+      "type": "Scripted",
+      "language": "English",
+      "genres": ["Comedy"],
+      "status": "In Development",
+      "runtime": 30,
+      "premiered": null,
+      "officialSite": null,
+      "schedule": {
+        "time": "",
+        "days": []
+      },
+      "rating": {
+        "average": null
+      },
+      "weight": 35,
+      "network": {
+        "id": 2,
+        "name": "CBS",
+        "country": {
+          "name": "United States",
+          "code": "US",
+          "timezone": "America/New_York"
+        }
+      },
+      "webChannel": null,
+      "externals": {
+        "tvrage": null,
+        "thetvdb": null,
+        "imdb": null
+      },
+      "image": null,
+      "summary": "<p><b>Pandas in New York</b> is about a family of Indian doctors with a successful group practice in New York City who embark on a project to arrange their youngest son's life, unaware he's made plans of his own.</p>",
+      "updated": 1521969912,
+      "_links": {
+        "self": {
+          "href": "http://api.tvmaze.com/shows/34597"
+        }
+      }
+    }
+  }
+]
