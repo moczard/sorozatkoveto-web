@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {
-    Grid, Col, Row,
+    Grid, Col, Row, Panel, Button
 } from 'react-bootstrap';
+import Parser from 'html-react-parser';
 import ModalImage from 'react-modal-image';
 import defaultpic from './default_pic2.png';
+
 
 
 class EpisodeSearchElement extends Component {
@@ -11,7 +13,8 @@ class EpisodeSearchElement extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isWatched: false
+            isWatched: false,
+            open: false
         };
     }
 
@@ -27,35 +30,55 @@ class EpisodeSearchElement extends Component {
 
 
     render() {
+
+
         return (
             <div>
-                <Grid>
+                <Grid fluid>
                     <Row>
-                        <Col>
+                        <Col lg={3}>
                             <ModalImage
                                 className="series_img"
                                 small={
                                     this.props.episode.image ? this.props.episode.image : defaultpic
                                 }
+                                large={
+                                    this.props.episode.image ? this.props.episode.image : defaultpic
+                                }
                                 hideDownload
                             />
                         </Col>
-                        <Col>
+                        <Col lg={7}>
                             <h2>{this.props.episode.name}</h2>
                             <h4>
                                 Runtime:
                       {this.props.episode.runtime}
                             </h4>
-                            <h4>{this.props.episode.number}</h4>
+                            <h4>Episode: {this.props.episode.number}</h4>
+                            <h4>Rating: {this.props.rating && this.props.rating.length
+                                ? this.props.rating[0].sum / this.props.rating[0].count : null}
+                            </h4>
 
 
                         </Col>
                     </Row>
 
-                    <Row>
-                        <div>{this.props.episode.summary}</div>
+                    <Row className="summary_row">
+                        <Button onClick={() => this.setState({ open: !this.state.open })}>
+                            Summary
+                         </Button>
+                        <Panel className="summary_collapse_panel" expanded={this.state.open} >
+                            <Panel.Collapse>
+                                <Panel.Body>
+                                    {this.props.episode.summary ? <div>{Parser(this.props.episode.summary)}</div> : <div>Not available</div>}
+                                </Panel.Body>
+                            </Panel.Collapse>
+                        </Panel>
+
+
                     </Row>
                 </Grid>
+                <hr></hr>
             </div>
 
         );

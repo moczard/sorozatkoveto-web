@@ -1,12 +1,6 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -22,24 +16,16 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .series_list_element {
   background: #fff;
   padding-bottom: 2rem;
+  padding-top: 0.3rem;
   border-radius: 5px;
   box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.75);
   text-align: left;
   overflow: hidden;
   margin-left: 20px;
-  #width: 35%;
+
 }
 
 .series_name {
@@ -60,9 +46,72 @@
 
 .SeriesCollapseButton{
   border: none;
+  outline: none;
+}
+
+
+.SeriesCollapseButton:hover {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.SeriesCollapseButton:focus {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.SeriesCollapseButton:active {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.LogourDropdown{
+  border: none;
 }
 
 .series_img{
-  height: 290px ;
-  width:210px;
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
+.episode_list_element{
+  background: rgb(24, 22, 22)
+}
+.watched_button{
+  border:none;
+  font-size: 4rem
+}
+
+.watched_button:hover{
+  border:none;
+  background: transparent;
+}
+
+
+.watched_button:disabled{
+ color:green;
+
+}
+
+.summary_collapse_panel{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.series_summary_div{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.followed_label{
+  font-size: 2rem;
+  
+}
+
+.followed_label_div{
+  margin-top: 3rem;
+}
+.genre_select_div{
+
+  width: 20%;
 }

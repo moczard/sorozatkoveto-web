@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ModalImage from 'react-modal-image';
 import {
-  Button, Collapse, Tab, Tabs, Row, Grid, Col,
+  Button, Collapse, Tab, Tabs, Row, Grid, Col, Label
 } from 'react-bootstrap';
+import Parser from 'html-react-parser';
 import defaultpic from './default_pic2.png';
 import EpisodeSearchElement from './EpisodeSearchElement';
 import connect from '../Socket/socket';
@@ -47,40 +48,56 @@ class SeriesSearchElement extends Component {
                   ? this.props.series.networkName
                   : 'Unknown'}
               </h3>
+              <h3>
+                {this.props.rating && this.props.rating.length
+                  ? this.props.rating[0].sum / this.props.rating[0].count : null}
+              </h3>
             </Col>
             <Col lg={3}>
-              {this.props.followedSeries.includes(this.props.series.id) ? 'Followed' : <Button bsStyle="success" onClick={this.handleFollow}>Follow</Button>}
+              <div className="followed_label_div">
+                {this.props.followedSeries.includes(this.props.series.id) ? <Label className="followed_label" bsStyle="success" >Followed</Label> : <Button bsStyle="success" onClick={this.handleFollow}>Follow</Button>}
+              </div>
             </Col>
+
           </Row>
-          <Row>
-            {this.props.series.summary}
+          <hr></hr>
+          <Row >
+            <div className="series_summary_div">
+              {this.props.series.summary ? <div>{Parser(this.props.series.summary)}</div> : <div></div>}
+            </div>
           </Row>
           <Row className="">
-            <div>
+            <div className="text-center">
               <Button className="SeriesCollapseButton" onClick={() => this.setState({ open: !this.state.open })}>
                 {this.state.open ? (
                   <i className="fas fa-caret-up" />
                 ) : (
-                  <i className="fas fa-caret-down" />
-                )}
+                    <i className="fas fa-caret-down" />
+                  )}
               </Button>
-              <Collapse in={this.state.open}>
-                <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                  {this.props.series.seasons.map(season => (
-                    <Tab eventKey={season.number} title={`${season.number}.Season`}>
-                      {season.episodes.map(episode => (
-                        <div>
-                          <EpisodeSearchElement episode={episode} />
-                        </div>
-                      ))}
-                    </Tab>
-                  ))}
-                </Tabs>
-              </Collapse>
             </div>
+            {this.state.open ?
+              <div>
+                <Collapse in={this.state.open}>
+                  <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                    {this.props.series.seasons.map(season => (
+                      <Tab eventKey={season.number} title={`${season.number}.Season`}>
+                        {season.episodes.map(episode => (
+                          <div>
+                            <EpisodeSearchElement key={episode.id} episode={episode} />
+                          </div>
+                        ))}
+                      </Tab>
+                    ))}
+                  </Tabs>
+                </Collapse>
+              </div>
+              :
+              <div></div>}
           </Row>
         </Grid>
       </div>
+
     );
 
   }

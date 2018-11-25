@@ -14,10 +14,11 @@ class SearchForm extends Component {
     this.state = {
       genres: [],
       series: [],
+      ratings: [],
       userData: {},
     };
     this.socket.emit('genres');
-    this.socket.emit('getByEmailHash', { emailHash: localStorage.getItem('emailHash')});
+    this.socket.emit('getByEmailHash', { emailHash: localStorage.getItem('emailHash') });
   }
 
   setupSocket() {
@@ -30,10 +31,13 @@ class SearchForm extends Component {
     this.socket.on('user', (data) => {
       this.setState({ userData: data[0] });
     });
-  }
+    this.socket.on('ratings', (data) => {
+      this.setState({ ratings: data });
+    });
 
-  handleSubmit(event) {
-    event.preventDefault();
+    this.socket.on('ratingsChange', () => {
+      this.socket.emit('findAllBySeriesIds', { seriesIds: this.state.userData.followedSeries });
+    });
   }
 
   handleGenreChange = () => {
@@ -46,21 +50,34 @@ class SearchForm extends Component {
     this.socket.emit('findByTitle', { title })
   }
 
+  handleRating = (seriesId, season, episode, rating) => {
+    this.socket.emit('addRatingsForEpisode', {
+      emailHash: localStorage.getItem('emailHash'), seriesId, season, episode, rating
+    });
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <ControlLabel>Search</ControlLabel>
+      <form >
+        <h1>Search</h1>
         <FormControl type="text" placeholder="Searh here" inputRef={ref => { this.titleInput = ref; }} onChange={this.handleTitleChange} />
-        <FormControl componentClass="select" placeholder="Genre" inputRef={ref => { this.genreInput = ref; }} onChange={this.handleGenreChange} >
-          {this.state.genres.map(genre => <option value={genre}>{genre}</option>)}
-        </FormControl>
-        {this.state.series.map(series => (
-          <SeriesSearchElement 
-            series={series}
-            followedSeries={this.state.userData.followedSeries} 
-          />
-        ))}
-      </form>
+        <h3>Genres</h3>
+        <div className="genre_select_div">
+          <FormControl classname="genre_select" componentClass="select" placeholder="Genre" inputRef={ref => { this.genreInput = ref; }} onChange={this.handleGenreChange} >
+            {this.state.genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
+          </FormControl>
+        </div >
+        {
+          this.state.series.map(series => (
+            <SeriesSearchElement
+              key={series.id}
+              series={series}
+              followedSeries={this.state.userData.followedSeries}
+              ratings={this.state.ratings.filter(rts => rts.seriesId === series.id)}
+            />
+          ))
+        }
+      </form >
     );
   }
 }

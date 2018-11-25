@@ -38,15 +38,16 @@ class AbotModal extends Component {
                 <Modal.Body>
                     <h4>How to use?</h4>
                     <p>
-                        You can follow your favourite series and mark the episodes, that you have seen already.
+                        You can follow your favourite series and mark the episodes, that you have seen already. Also you can rate
+                        the the your favourites
                     </p>
                     <p>
-                        On the Search tab you can search among all the series and episodes.
+                        On the Search tab you can search among all the series and episodes. You cando it by title or by the Genre of the series.
                     </p>
-
                     <hr />
-
-                    <h4>TO DO</h4>
+                    <p>
+                        This is a homework project created by <b>Mózcár Dávid</b> and <b>Sabó Benedek.</b>
+                    </p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.context.router.history.goBack}>Close</Button>

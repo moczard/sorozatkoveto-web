@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import ModalImage from 'react-modal-image';
 import {
-  Button, Collapse, Tab, Tabs, Label, Row, Grid, Col,
+  Button, Collapse, Tab, Label, Row, Grid, Col, Popover, OverlayTrigger, Tabs
 } from 'react-bootstrap';
+import Parser from 'html-react-parser';
 import defaultpic from './default_pic2.png';
 import EpisodeElement from './EpisodeElement';
+
+import 'react-responsive-tabs/styles.css';
+
 
 class SeriesElement extends Component {
   constructor() {
@@ -17,7 +21,13 @@ class SeriesElement extends Component {
   render() {
     const { series } = this.props;
     const { open } = this.state;
+    const popoverSummary = (
+      <Popover id="popover-summary" title="Summary">
+        {series.summary ? <div>{Parser(series.summary)}</div> : <div></div>}
+      </Popover>
+    );
     return (
+
       <div className="series_list_element">
         <Grid fluid>
           <Row className="">
@@ -25,6 +35,9 @@ class SeriesElement extends Component {
               <ModalImage
                 className="series_img"
                 small={
+                  series.image ? series.image : defaultpic
+                }
+                large={
                   series.image ? series.image : defaultpic
                 }
                 hideDownload
@@ -38,54 +51,68 @@ class SeriesElement extends Component {
                   : 'Unknown'}
               </h3>
             </Col>
-            <Col lg={3}>
-              <Label bsStyle="success">Followed</Label>
-            </Col>
+            <OverlayTrigger trigger="click" placement="right" overlay={popoverSummary}>
+              <Col lg={3}>
+                <div className="followed_label_div">
+                  <Label className="followed_label" bsStyle="success" >Followed</Label>
+                </div>
+              </Col>
+            </OverlayTrigger>
           </Row>
-          <Row className="">
-            <div>
-              <Button className="SeriesCollapseButton" onClick={() => this.setState({ open: !open })}>
+          <Row >
+            <div className="text-center">
+              <Button className="SeriesCollapseButton" bsSize="large" onClick={() => this.setState({ open: !open })}>
                 {open ? (
                   <i className="fas fa-caret-up" />
                 ) : (
-                  <i className="fas fa-caret-down" />
-                )}
+                    <i className="fas fa-caret-down" />
+                  )}
               </Button>
-              <Collapse in={open}>
-                <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                  {series.seasons.map(season => (
-                    <Tab eventKey={season.number} title={`${season.number}.Season`}>
-
-                      {season.episodes.map(episode => (
-                        <div>
-                          <EpisodeElement
-                            episode={episode}
-                            isWatched={this.props.watchedEpisodes.filter(watchedEpisode => (
-                              watchedEpisode.seriesId === series.id
-                              && watchedEpisode.season === season.number
-                              && watchedEpisode.episode === episode.number
-                            )).length}
-                            rating={this.props.ratings.length 
-                              ? this.props.ratings.filter(rating => (
-                                rating.season === season.number
-                              && rating.episode === episode.number
-                              ))
-                              : null}
-                            handleWatched={this.props.handleWatched}
-                            handleRating={this.props.handleRating}
-                            season={season.number}
-                            seriesId={series.id}
-                          />
-                        </div>
-                      ))}
-                    </Tab>
-                  ))}
-                </Tabs>
-              </Collapse>
             </div>
           </Row>
+          <Row>
+            {this.state.open ?
+              <div>
+                <Collapse in={open}>
+                  <Tabs defaultActiveKey={1} id="series_tab">
+                    {series.seasons.map(season => (
+                      <Tab eventKey={season.number} title={`${season.number}.Season`}>
+
+                        {season.episodes.map(episode => (
+                          <div>
+                            <EpisodeElement
+                              episode={episode}
+                              isWatched={this.props.watchedEpisodes.filter(watchedEpisode => (
+                                watchedEpisode.seriesId === series.id
+                                && watchedEpisode.season === season.number
+                                && watchedEpisode.episode === episode.number
+                              )).length}
+                              rating={this.props.ratings.length
+                                ? this.props.ratings.filter(rating => (
+                                  rating.season === season.number
+                                  && rating.episode === episode.number
+                                ))
+                                : null}
+                              handleWatched={this.props.handleWatched}
+                              handleRating={this.props.handleRating}
+                              season={season.number}
+                              seriesId={series.id}
+                              key={series.id}
+                            />
+                          </div>
+                        ))}
+                      </Tab>
+                    ))}
+                  </Tabs>
+
+                </Collapse>
+              </div>
+              :
+              <div></div>}
+          </Row>
         </Grid>
-      </div>
+      </div >
+
     );
   }
 }

@@ -18,10 +18,6 @@ const menu = [
     label: "About",
     to: "/about"
   },
-  {
-    icon: "fa fa-sign-out-alt",
-    label: "Logout"
-  }
 ];
 
 class MenuBar extends Component {

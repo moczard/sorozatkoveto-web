@@ -10,6 +10,7 @@ class StarRatingBar extends Component {
         starHoverColor="yellow"
         changeRating={this.props.changeRating}
         numberOfStars={5}
+        starDimension="4rem"
       />
     );
   }
