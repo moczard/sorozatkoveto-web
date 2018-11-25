@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  FormControl, ControlLabel,
+  FormControl,
 } from 'react-bootstrap';
 import connect from '../Socket/socket';
 import SeriesSearchElement from '../Components/SeriesSearchElement';
@@ -58,6 +58,7 @@ class SearchForm extends Component {
 
   render() {
     return (
+
       <form >
         <h1>Search</h1>
         <FormControl type="text" placeholder="Searh here" inputRef={ref => { this.titleInput = ref; }} onChange={this.handleTitleChange} />
@@ -78,6 +79,7 @@ class SearchForm extends Component {
           ))
         }
       </form >
+
     );
   }
 }

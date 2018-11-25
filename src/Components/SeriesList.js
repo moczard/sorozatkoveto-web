@@ -52,17 +52,21 @@ class SeriesList extends Component {
   render() {
     const { series } = this.state;
     const { userData } = this.state;
+    console.log(userData.watchedEpisodes)
     return (
       <div>
-        {series.map(oneSeries => (
-          <SeriesElement
-            series={oneSeries}
-            watchedEpisodes={userData.watchedEpisodes}
-            handleWatched={this.handleWatched}
-            ratings={this.state.ratings.filter(rts => rts.seriesId === oneSeries.id)}
-            handleRating={this.handleRating}
-          />
-        ))}
+        <div>
+          {series.map(oneSeries => (
+            <SeriesElement
+              series={oneSeries}
+              watchedEpisodes={userData.watchedEpisodes}
+              handleWatched={this.handleWatched}
+              ratings={this.state.ratings.filter(rts => rts.seriesId === oneSeries.id)}
+              handleRating={this.handleRating}
+              key={userData._id}
+            />
+          ))}
+        </div>
       </div>
     );
   }
