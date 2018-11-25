@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
 import makeMainRoutes from './Routes';
 
 
@@ -11,4 +10,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-registerServiceWorker();
+
