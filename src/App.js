@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Navbar, DropdownButton, MenuItem, Grid, Col,
+  Navbar, DropdownButton, MenuItem, Grid, Col, Nav
 } from 'react-bootstrap';
 import './App.css';
 import jwt from 'jsonwebtoken';
@@ -36,16 +36,19 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar fluid >
-          <DropdownButton id="LogoutDropdown" className="LogoutDropdown" title={<i className="fas fa-user-circle" />} noCaret bsSize="large" key={1}>
-            <MenuItem
-              eventKey="1"
-              onClick={this.props.logout}
-            >
-              Logout
+        <Navbar className="app_navbar" fluid>
+          <Nav pullRight>
+            <DropdownButton id="LogoutDropdown" className="logout_dropdown" title={<i className="fas fa-user-circle" />} noCaret bsSize="large" key={1}>
+              <MenuItem
+                eventKey="1"
+                onClick={this.props.logout}
+              >
+                Logout
             </MenuItem>
+            </DropdownButton>
+          </Nav>
 
-          </DropdownButton>
+
         </Navbar>
         <ScrollUpButton />
         <Grid fluid>

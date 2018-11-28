@@ -8,7 +8,6 @@ import defaultpic from './default_pic2.png';
 import EpisodeSearchElement from './EpisodeSearchElement';
 import connect from '../Socket/socket';
 
-
 class SeriesSearchElement extends Component {
   constructor(props) {
     super(props);
@@ -63,7 +62,16 @@ class SeriesSearchElement extends Component {
           <hr></hr>
           <Row >
             <div className="series_summary_div">
-              {this.props.series.summary ? <div>{Parser(this.props.series.summary)}</div> : <div></div>}
+
+
+
+
+
+
+
+              {this.props.series.summary ?
+                <div>{Parser(this.props.series.summary)}</div> :
+                <div>Unavailable</div>}
             </div>
           </Row>
           <Row className="">
@@ -82,11 +90,18 @@ class SeriesSearchElement extends Component {
                   <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                     {this.props.series.seasons.map(season => (
                       <Tab eventKey={season.number} title={`${season.number}.Season`}>
-                        {season.episodes.map(episode => (
+                        {season.episodes.length > 0 ?
                           <div>
-                            <EpisodeSearchElement key={episode.id} episode={episode} />
+                            {season.episodes.map(episode => (
+                              <div>
+                                <EpisodeSearchElement key={episode.id} episode={episode} />
+                              </div>
+                            ))}
                           </div>
-                        ))}
+                          : <div className="text-center">
+                            <h2> No information is available yet</h2>
+                          </div>
+                        }
                       </Tab>
                     ))}
                   </Tabs>

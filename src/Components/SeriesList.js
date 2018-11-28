@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SeriesElement from './SeriesElement';
 import connect from '../Socket/socket';
-
+import { Label } from 'react-bootstrap';
 
 class SeriesList extends Component {
   constructor(props) {
@@ -52,21 +52,31 @@ class SeriesList extends Component {
   render() {
     const { series } = this.state;
     const { userData } = this.state;
-    console.log(userData.watchedEpisodes)
     return (
+
       <div>
-        <div>
-          {series.map(oneSeries => (
-            <SeriesElement
-              series={oneSeries}
-              watchedEpisodes={userData.watchedEpisodes}
-              handleWatched={this.handleWatched}
-              ratings={this.state.ratings.filter(rts => rts.seriesId === oneSeries.id)}
-              handleRating={this.handleRating}
-              key={userData._id}
-            />
-          ))}
+        <div className="series_list_title">
+          <h1>My List <Label bsStyle="default">{series.length}</Label> </h1>
         </div>
+        {series.length === 0 ?
+          <div className="text-center">"
+          <h2 className="no_series_text">You are folowing no series.<br /><br /> Navigate to <i className="fa fa-search"></i>Search to add some. </h2>
+          </div> :
+          <div>
+            {series.map(oneSeries => (
+              <SeriesElement
+                series={oneSeries}
+                watchedEpisodes={userData.watchedEpisodes}
+                handleWatched={this.handleWatched}
+                ratings={this.state.ratings.filter(rts => rts.seriesId === oneSeries.id)}
+                handleRating={this.handleRating}
+                key={userData._id}
+              />
+            ))}
+          </div>
+
+
+        }
       </div>
     );
   }
