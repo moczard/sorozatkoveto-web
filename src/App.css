@@ -1,20 +1,6 @@
 .App {
   text-align: center;
 }
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
 
 .series_list_element {
   background: #fff;
@@ -66,8 +52,9 @@
   outline: none;
 }
 
-.LogourDropdown{
+.logout_dropdown{
   border: none;
+  margin-right: 3rem;
 }
 
 .series_img{
@@ -105,13 +92,34 @@
 
 .followed_label{
   font-size: 2rem;
-  
 }
 
 .followed_label_div{
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 .genre_select_div{
   margin-bottom: 3rem;
   width: 20%;
+}
+
+.episode_count_badge{
+  background-color: rgb(7, 161, 7);
+  margin-left: 2%;
+  margin-bottom: 2rem
+}
+
+.series_list_title{
+  margin-left: 3%;
+  margin-bottom: 3rem;
+}
+
+.no_series_text{
+  color: rgb(110, 105, 105)
+}
+
+
+
+.app_navbar{
+ 
+  background-color: #333;
 }

@@ -64,9 +64,14 @@ class EpisodeSearchElement extends Component {
                     </Row>
 
                     <Row className="summary_row">
-                        <Button onClick={() => this.setState({ open: !this.state.open })}>
+                        <Button className="" onClick={() => this.setState({ open: !this.state.open })}>
                             Summary
-                         </Button>
+                             {this.state.open ? (
+                                <i className="fas fa-caret-up" />
+                            ) : (
+                                    <i className="fas fa-caret-down" />
+                                )}
+                        </Button>
                         <Panel className="summary_collapse_panel" expanded={this.state.open} >
                             <Panel.Collapse>
                                 <Panel.Body>

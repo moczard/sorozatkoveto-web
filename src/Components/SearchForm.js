@@ -5,6 +5,8 @@ import {
 import connect from '../Socket/socket';
 import SeriesSearchElement from '../Components/SeriesSearchElement';
 
+
+
 class SearchForm extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +40,9 @@ class SearchForm extends Component {
     this.socket.on('ratingsChange', () => {
       this.socket.emit('findAllBySeriesIds', { seriesIds: this.state.userData.followedSeries });
     });
+
+
+
   }
 
   handleGenreChange = () => {
@@ -50,34 +55,50 @@ class SearchForm extends Component {
     this.socket.emit('findByTitle', { title })
   }
 
-  handleRating = (seriesId, season, episode, rating) => {
-    this.socket.emit('addRatingsForEpisode', {
-      emailHash: localStorage.getItem('emailHash'), seriesId, season, episode, rating
-    });
-  }
+
 
   render() {
+    console.log(this.state.series.length);
+
     return (
 
-      <form >
+      < form >
         <h1>Search</h1>
         <FormControl type="text" placeholder="Searh here" inputRef={ref => { this.titleInput = ref; }} onChange={this.handleTitleChange} />
         <h3>Genres</h3>
         <div className="genre_select_div">
-          <FormControl classname="genre_select" componentClass="select" placeholder="Genre" inputRef={ref => { this.genreInput = ref; }} onChange={this.handleGenreChange} >
+          <FormControl className="genre_select" componentClass="select" placeholder="Genre" inputRef={ref => { this.genreInput = ref; }} onChange={this.handleGenreChange} >
             {this.state.genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
           </FormControl>
         </div >
-        {
-          this.state.series.map(series => (
-            <SeriesSearchElement
-              key={series.id}
-              series={series}
-              followedSeries={this.state.userData.followedSeries}
-              ratings={this.state.ratings.filter(rts => rts.seriesId === series.id)}
-            />
-          ))
+
+
+
+        {this.state.series.length > 0 ?
+          <div>
+            {
+              this.state.series.map(series => (
+                <SeriesSearchElement
+                  key={series.id}
+                  series={series}
+                  followedSeries={this.state.userData.followedSeries}
+                  ratings={this.state.ratings.filter(rts => rts.seriesId === series.id)}
+                />
+              ))
+            }
+          </div >
+          : <div className="text-center">
+            <h2><i className="fa fa-search"></i></h2>
+            <h3 className="no_series_text"> No result was found<br />Try something different</h3>
+          </div>
+
         }
+
+
+
+
+
+
       </form >
 
     );

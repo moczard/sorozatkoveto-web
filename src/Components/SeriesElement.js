@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ModalImage from 'react-modal-image';
 import {
-  Button, Collapse, Tab, Label, Row, Grid, Col, Popover, OverlayTrigger, Tabs
+  Button, Collapse, Tab, Label, Row, Grid, Col, Popover, OverlayTrigger, Tabs, Badge
 } from 'react-bootstrap';
 import Parser from 'html-react-parser';
 import defaultpic from './default_pic2.png';
@@ -44,15 +44,19 @@ class SeriesElement extends Component {
               />
             </Col>
             <Col lg={6}>
-              <h1 className="series_name">{series.name}</h1>
+              <h1 className="series_name">{series.name}
+                <Badge className="episode_count_badge">{this.props.watchedEpisodes.filter(watchedEpisode => (
+                  watchedEpisode.seriesId === series.id)).length}
+                </Badge>
+              </h1>
               <h3>
                 {series.networkName
                   ? series.networkName
                   : 'Unknown'}
               </h3>
-            </Col>
+            </Col >
             <OverlayTrigger trigger="click" placement="right" overlay={popoverSummary}>
-              <Col lg={3}>
+              <Col md={2} lg={3}>
                 <div className="followed_label_div">
                   <Label className="followed_label" bsStyle="success" >Followed</Label>
                 </div>
@@ -77,30 +81,37 @@ class SeriesElement extends Component {
                   <Tabs defaultActiveKey={1} id="series_tab">
                     {series.seasons.map(season => (
                       <Tab eventKey={season.number} title={`${season.number}.Season`}>
-
-                        {season.episodes.map(episode => (
+                        {season.episodes.length > 0 ?
                           <div>
-                            <EpisodeElement
-                              episode={episode}
-                              isWatched={this.props.watchedEpisodes.filter(watchedEpisode => (
-                                watchedEpisode.seriesId === series.id
-                                && watchedEpisode.season === season.number
-                                && watchedEpisode.episode === episode.number
-                              )).length}
-                              rating={this.props.ratings.length
-                                ? this.props.ratings.filter(rating => (
-                                  rating.season === season.number
-                                  && rating.episode === episode.number
-                                ))
-                                : null}
-                              handleWatched={this.props.handleWatched}
-                              handleRating={this.props.handleRating}
-                              season={season.number}
-                              seriesId={series.id}
-                              key={series.id}
-                            />
+                            {season.episodes.map(episode => (
+
+                              <EpisodeElement
+                                episode={episode}
+                                isWatched={this.props.watchedEpisodes.filter(watchedEpisode => (
+                                  watchedEpisode.seriesId === series.id
+                                  && watchedEpisode.season === season.number
+                                  && watchedEpisode.episode === episode.number
+                                )).length}
+                                rating={this.props.ratings.length
+                                  ? this.props.ratings.filter(rating => (
+                                    rating.season === season.number
+                                    && rating.episode === episode.number
+                                  ))
+                                  : null}
+                                handleWatched={this.props.handleWatched}
+                                handleRating={this.props.handleRating}
+                                season={season.number}
+                                seriesId={series.id}
+                                key={series.id}
+                              />
+
+                            ))}
                           </div>
-                        ))}
+
+                          : <div className="text-center">
+                            <h2> No information is available yet</h2>
+                          </div>
+                        }
                       </Tab>
                     ))}
                   </Tabs>
